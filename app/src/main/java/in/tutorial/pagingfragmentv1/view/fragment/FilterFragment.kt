@@ -39,44 +39,31 @@ class FilterFragment : Fragment() {
         binding?.submit?.setOnClickListener {
             val text = binding?.etGrNo?.text.toString()
             if(text.isNotEmpty()){
-                if(findNavController().currentDestination?.id != R.id.pagingListFragment){
-                    //fragmentManager?.beginTransaction()?.remove(parentFragmentManager.findFragmentById(R.id.pagingListFragment)!!)?.commitAllowingStateLoss()
-                    findNavController().navigate(
-                        FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                            text, "2022-04-01", "2023-03-31"
-                        )
-                    )
-                }else if(findNavController().currentDestination?.id == R.id.pagingListFragment){
+                if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
                     findNavController().navigate(
                         PagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
                     )
-                    findNavController().navigate(
-                        FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                            text, "2022-04-01", "2023-03-31"
-                        )
-                    )
                 }
+                findNavController().navigate(
+                    FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                        text, "2021-04-01", "2023-03-31"
+                    )
+                )
             }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        if(findNavController().currentDestination?.id != R.id.pagingListFragment) {
-            findNavController().navigate(
-                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                    "", "2021-04-01", "2023-03-31"
-                )
-            )
-        }else{
+        if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
             findNavController().navigate(
                 PagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
             )
-            findNavController().navigate(
-                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                    "", "2022-04-01", "2023-03-31"
-                )
-            )
         }
+        findNavController().navigate(
+            FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                "", "2021-04-01", "2023-03-31"
+            )
+        )
     }
 }

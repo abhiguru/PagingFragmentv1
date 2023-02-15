@@ -2,4 +2,10 @@
     <string name="app_name">PagingFragmentv1</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gr_dtl_item_name">Item Name: %1$s</string>
+    <string name="gr_dtl_qty">Original Qty: %1$s</string>
+    <string name="gr_dtl_in_stock">InStock: %1$s</string>
+    <string name="gr_dtl_weight">Weight: %1$s</string>
+    <string name="gr_dtl_rack">Rack : %1$s</string>
+    <string name="gr_dtl_package_mark">Package Mark: %1$s</string>
 </resources>
