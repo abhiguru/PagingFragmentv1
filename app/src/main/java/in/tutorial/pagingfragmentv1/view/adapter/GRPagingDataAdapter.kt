@@ -1,20 +1,32 @@
 package `in`.tutorial.pagingfragmentv1.view.adapter
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 
 import androidx.recyclerview.widget.RecyclerView
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.databinding.GrListItemBinding
+import `in`.tutorial.pagingfragmentv1.view.activity.GRDetails
 
-class GRPagingDataAdapter():PagingDataAdapter<GRPaging.GoodsReceived, GRPagingDataAdapter.GRViewHolder>(
+class GRPagingDataAdapter(
+    private val fragment:Fragment
+):PagingDataAdapter<GRPaging.GoodsReceived, GRPagingDataAdapter.GRViewHolder>(
     diffCallback = diffUtil
 ) {
     override fun onBindViewHolder(holder: GRViewHolder, position: Int) {
         getItem(position)?.let {
             holder.onBind(it)
+        }
+        holder.itemView.setOnClickListener {
+            Log.e("GRClick", " GRId - ${holder.binding.tvGrId.text}")
+            val intent = Intent(fragment.activity, GRDetails::class.java)
+            intent.putExtra("grId", holder.binding.tvGrId.text)
+            fragment.activity?.startActivity(intent)
         }
     }
 
@@ -33,6 +45,7 @@ class GRPagingDataAdapter():PagingDataAdapter<GRPaging.GoodsReceived, GRPagingDa
             binding.tvCustomerName.text = data.customerName
             binding.tvItemName.text = data.itemName
             binding.tvPackageMark.text = data.packageMark
+            binding.tvGrId.text = data.grId
         }
     }
     companion object{

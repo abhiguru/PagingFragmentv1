@@ -65,7 +65,7 @@ class PagingListFragment : Fragment() {
             FlowPagerViewModel(repositoryImpl = repositoryImpl)
         }).get(FlowPagerViewModel::class.java)
 
-        pagingDataAdapter = GRPagingDataAdapter()
+        pagingDataAdapter = GRPagingDataAdapter(this@PagingListFragment)
         bindings?.rvPagingGr?.apply {
             layoutManager = linearLayoutManager
             adapter = pagingDataAdapter

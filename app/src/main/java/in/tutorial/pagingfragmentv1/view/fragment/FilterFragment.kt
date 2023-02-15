@@ -62,10 +62,21 @@ class FilterFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        findNavController().navigate(
-            FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                "", "2021-04-01", "2023-03-31"
+        if(findNavController().currentDestination?.id != R.id.pagingListFragment) {
+            findNavController().navigate(
+                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                    "", "2021-04-01", "2023-03-31"
+                )
             )
-        )
+        }else{
+            findNavController().navigate(
+                PagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
+            )
+            findNavController().navigate(
+                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                    "", "2022-04-01", "2023-03-31"
+                )
+            )
+        }
     }
 }
