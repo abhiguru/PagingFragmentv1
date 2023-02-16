@@ -13,34 +13,37 @@ import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.databinding.ActivityGrdetailsBinding
 import `in`.tutorial.pagingfragmentv1.databinding.GrDetailsItemsListBinding
 import `in`.tutorial.pagingfragmentv1.view.adapter.GRDetailsItemsListAdapter
+import `in`.tutorial.pagingfragmentv1.viewModel.GRDetailsViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 
 class GRDetails : AppCompatActivity() {
     var bindings: ActivityGrdetailsBinding? = null
+    lateinit var viewModel: GRDetailsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindings = ActivityGrdetailsBinding.inflate(layoutInflater)
         setContentView(bindings!!.root)
         val grId = intent.getStringExtra("grId")
-        val networkService = (this.application as MyApplication).networkService
-        lifecycleScope.launch {
-            networkService.getGRDetails(UUID.fromString(grId) )
-                .run {
-                    bindings?.etRegistration?.setText(this.grDetails.registrationNo)
-                    bindings?.etSender?.setText(this.grDetails.senderName)
-                    bindings?.etDate?.setText(this.grDetails.date)
-                    bindings?.etSupervisor?.setText(this.grDetails.supervisorName)
-                    bindings?.etCustomer?.setText(this.grDetails.customerName)
-                    bindings?.etGrno?.setText(this.grDetails.grNo)
-                    val grAdapter = GRDetailsItemsListAdapter(this.grDetails.trl,
-                        this@GRDetails)
-                    bindings?.rvGrDetailsItemsList?.apply {
-                        layoutManager = LinearLayoutManager(this@GRDetails)
-                        adapter = grAdapter
-                    }
-                }
+        viewModel = GRDetailsViewModel(this.application as MyApplication)
+        grId?.let { viewModel.getDetails(it) }
+        viewModel.grDetails.observe(this) {
+            bindings?.etRegistration?.setText(it.registrationNo)
+            bindings?.etSender?.setText(it.senderName)
+            bindings?.etDate?.setText(it.date)
+            bindings?.etSupervisor?.setText(it.supervisorName)
+            bindings?.etCustomer?.setText(it.customerName)
+            bindings?.etGrno?.setText(it.grNo)
+            //bindings?.etNote?.setText(it.note)
+            val grAdapter = GRDetailsItemsListAdapter(it.trl,
+                this@GRDetails)
+            bindings?.rvGrDetailsItemsList?.apply {
+                layoutManager = LinearLayoutManager(this@GRDetails)
+                adapter = grAdapter
+            }
         }
+
 
     }
 }

@@ -3,11 +3,13 @@ package `in`.tutorial.pagingfragmentv1.data.remote.repository.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import `in`.tutorial.pagingfragmentv1.data.remote.NetworkService
+import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthToken
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GoodReceivedResponseMapper
 import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodsReceivedResponse
 
 class GRFlowPagingSource(
+    private val authToken: String,
     private val networkService: NetworkService,
     private val dateFrom:String,
     private val dateTo:String,
@@ -23,6 +25,7 @@ class GRFlowPagingSource(
         try {
             if(grNo.isNotEmpty()){
                 return networkService.getGRListFlowByGR(
+                    auth = authToken,
                     pageNumber = currentPage, dateFrom = dateFrom,
                     dateTo = dateTo, grNo = grNo
                 )
@@ -36,6 +39,7 @@ class GRFlowPagingSource(
                     }
             }else {
                 return networkService.getGRListFlowAll(
+                    auth = authToken,
                     pageNumber = currentPage, dateFrom = dateFrom,
                     dateTo = dateTo
                 )

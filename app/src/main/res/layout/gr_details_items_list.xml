@@ -3,16 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_95sdp"
+    android:layout_height="@dimen/_170sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_height="@dimen/_170sdp"
+        app:cardCornerRadius="@dimen/_2sdp"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingStart="@dimen/_4sdp"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/tv_itemId"
             android:visibility="gone"
@@ -21,6 +28,7 @@
         <TextView
             android:id="@+id/tv_itemName"
             tools:text="@string/gr_dtl_item_name"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -32,31 +40,33 @@
         <TextView
             android:id="@+id/tv_qty"
             tools:text="@string/gr_dtl_qty"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_stock"
             tools:text="@string/gr_dtl_in_stock"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             tools:text="@string/gr_dtl_weight"
             android:id="@+id/tv_weight"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_rack"
             tools:text="@string/gr_dtl_rack"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_packageMark"
             tools:text="@string/gr_dtl_package_mark"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/divider_line_color" />
     </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

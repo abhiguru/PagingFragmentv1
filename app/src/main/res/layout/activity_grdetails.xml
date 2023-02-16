@@ -11,6 +11,7 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         android:scrollbars="none"
+        android:paddingBottom="@dimen/_40sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +40,8 @@
                     android:id="@+id/et_grno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:textColor="@color/grey_900"
                     android:textSize="@dimen/_15sdp" />
@@ -112,6 +115,8 @@
                     android:id="@+id/et_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:gravity="top"
                     android:textColor="@color/grey_900"
                     android:textSize="@dimen/_15sdp" />
@@ -162,6 +167,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="top"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:inputType="text"
                     android:textColor="@color/grey_900"
                     android:textSize="@dimen/_15sdp" />
@@ -171,31 +178,42 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_gr_details_items_list"
                 android:layout_width="match_parent"
-                android:layout_height="213dp"
+                android:layout_height="wrap_content"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingStart="@dimen/_20sdp"
                 android:paddingEnd="@dimen/_20sdp"
-                app:layout_constraintBottom_toTopOf="@+id/btn_add_gr_item"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/til_supervisor" />
 
-            <Button
-                android:id="@+id/btn_add_gr_item"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_note"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center"
-                android:text="Add GR Item"
+                android:hint="Note"
+                app:hintTextColor="@color/blue_grey_700"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_gr_details_items_list" />
+                app:layout_constraintTop_toBottomOf="@id/rv_gr_details_items_list">
+
+                <EditText
+                    android:id="@+id/et_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:lines="8"
+                    android:maxLines="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/grey_900"
+                    android:textSize="@dimen/_15sdp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

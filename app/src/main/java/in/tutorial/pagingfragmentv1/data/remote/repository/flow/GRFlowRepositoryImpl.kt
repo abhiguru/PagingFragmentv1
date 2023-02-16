@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.data.remote.repository.paging.GRFlowPagingSource
+import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodReceivedDetails
 import kotlinx.coroutines.flow.Flow
 
 class GRFlowRepositoryImpl(
@@ -16,6 +17,7 @@ class GRFlowRepositoryImpl(
             pagingSourceFactory = {pagingSource}
         ).flow
     }
+
     private fun defaultPagingConfig():PagingConfig{
         return PagingConfig(
             pageSize = 30,

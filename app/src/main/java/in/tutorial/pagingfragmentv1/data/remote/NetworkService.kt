@@ -1,22 +1,19 @@
 package `in`.tutorial.pagingfragmentv1.data.remote
 
+import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthToken
+import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthTokenResponse
 import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodReceivedDetails
 import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodsReceivedResponse
-import `in`.tutorial.pagingfragmentv1.view.activity.GRDetails
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.util.UUID
 
 interface NetworkService {
     @Headers(
-        Endpoint.HEADER_ACCEPT,
-        Endpoint.HEADER_AUTH
+        Endpoint.HEADER_ACCEPT
     )
     @GET(Endpoint.GET_ALL_GR)
     suspend fun getGRListFlowByGR(
+        @Header("auth") auth:String,
         @Query("page") pageNumber: Int,
         @Query("dateFrom") dateFrom: String,
         @Query("dateTo") dateTo: String,
@@ -24,11 +21,11 @@ interface NetworkService {
     ): GoodsReceivedResponse
 
     @Headers(
-        Endpoint.HEADER_ACCEPT,
-        Endpoint.HEADER_AUTH
+        Endpoint.HEADER_ACCEPT
     )
     @GET(Endpoint.GET_ALL_GR)
     suspend fun getGRListFlowAll(
+        @Header("auth") auth:String,
         @Query("page") pageNumber: Int,
         @Query("dateFrom") dateFrom: String,
         @Query("dateTo") dateTo: String,
@@ -41,4 +38,6 @@ interface NetworkService {
     @GET(Endpoint.GET_GR_DETAILS)
     suspend fun getGRDetails(@Path("id") id:UUID): GoodReceivedDetails
 
+    @POST
+    suspend fun postAuthToken(@Url url:String, @Body body: AuthToken): AuthTokenResponse
 }

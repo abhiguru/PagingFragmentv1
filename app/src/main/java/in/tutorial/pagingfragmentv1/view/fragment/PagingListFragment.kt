@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import `in`.tutorial.pagingfragmentv1.MyApplication
 import `in`.tutorial.pagingfragmentv1.R
+import `in`.tutorial.pagingfragmentv1.data.remote.Endpoint
 import `in`.tutorial.pagingfragmentv1.data.remote.repository.flow.GRFlowRepositoryImpl
 import `in`.tutorial.pagingfragmentv1.data.remote.repository.paging.GRFlowPagingSource
 import `in`.tutorial.pagingfragmentv1.databinding.FragmentPagingListBinding
@@ -56,6 +57,7 @@ class PagingListFragment : Fragment() {
 
     fun paging(grNo:String, dateFrom:String, dateTo:String){
         pagingSource = GRFlowPagingSource(
+            Endpoint.AUTH_TOKEN,
             (requireActivity().application as MyApplication).networkService,
             dateFrom, dateTo, grNo
         )

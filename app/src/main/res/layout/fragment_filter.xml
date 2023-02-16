@@ -1,24 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragment.FilterFragment">
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tl_search_gr"
+        android:id="@+id/til_grno"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_gr_no"
+            android:id="@+id/et_grno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="GR Number" />
     </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:id="@+id/ll_dates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_grno">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_dateFrom"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_dateFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date From"
+                android:inputType="text"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textColor="@color/design_default_color_primary"
+                android:textColorHint="@color/secondary_color"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_dateTo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_dateTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date From"
+                android:inputType="text"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textColor="@color/design_default_color_primary"
+                android:textColorHint="@color/secondary_color"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@id/ll_dates"
+        app:layout_constraintStart_toStartOf="parent"
         android:text="Submit"/>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
