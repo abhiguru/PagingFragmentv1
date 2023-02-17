@@ -2,6 +2,7 @@ package `in`.tutorial.pagingfragmentv1.view.fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,6 @@ import `in`.tutorial.pagingfragmentv1.databinding.FragmentFilterBinding
 import `in`.tutorial.pagingfragmentv1.viewModel.PageFilter
 import java.text.SimpleDateFormat
 import java.util.*
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -40,7 +36,6 @@ class FilterFragment : Fragment() {
         initDates()
         return binding!!.root
     }
-
     private fun initDates(){
         dateSetListenerFrom = DatePickerDialog.OnDateSetListener{
                 view, year, month, dayOfMonth ->
@@ -62,7 +57,6 @@ class FilterFragment : Fragment() {
         updateFromDateInView()
         updateToDateInView()
     }
-
     private fun updateFromDateInView(){
         val myFormat = "yyyy-MM-dd"
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
@@ -95,19 +89,29 @@ class FilterFragment : Fragment() {
             val text = binding?.etGrno?.text.toString()
             val dateFrom = binding?.etDateFrom?.text.toString()
             val dateTo = binding?.etDateTo?.text.toString()
+
             if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
                 findNavController().navigate(
                     PagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
                 )
-            }
-            findNavController().navigate(
-                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                    text, dateFrom, dateTo
+                findNavController().navigate(
+                    FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                        text, dateFrom, dateTo
+                    )
                 )
-            )
+            }
+            if(findNavController().currentDestination?.id == R.id.dispatchFiltersFragment){
+                findNavController().navigate(
+                    DispatchPagingFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
+                )
+                findNavController().navigate(
+                    FilterFragmentDirections.actionFilterFragmentToDispatchFiltersFragment(
+                        text, dateFrom, dateTo
+                    )
+                )
+            }
         }
     }
-
     override fun onStart() {
         super.onStart()
         val dateFrom = binding?.etDateFrom?.text.toString()

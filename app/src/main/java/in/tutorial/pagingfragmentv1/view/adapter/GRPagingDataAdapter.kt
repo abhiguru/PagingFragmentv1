@@ -5,13 +5,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 
 import androidx.recyclerview.widget.RecyclerView
+import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.databinding.GrListItemBinding
 import `in`.tutorial.pagingfragmentv1.view.activity.GRDetails
+import `in`.tutorial.pagingfragmentv1.view.fragment.PagingListFragmentDirections
+import java.util.UUID
 
 class GRPagingDataAdapter(
     private val fragment:Fragment
@@ -24,9 +28,10 @@ class GRPagingDataAdapter(
         }
         holder.itemView.setOnClickListener {
             Log.e("GRClick", " GRId - ${holder.binding.tvGrId.text}")
-            val intent = Intent(fragment.activity, GRDetails::class.java)
-            intent.putExtra("grId", holder.binding.tvGrId.text)
-            fragment.activity?.startActivity(intent)
+            val grId = holder.binding.tvGrId.text
+            fragment.findNavController().navigate(
+                PagingListFragmentDirections
+                    .actionPagingListFragmentToGRDetails(grId = grId as String))
         }
     }
 

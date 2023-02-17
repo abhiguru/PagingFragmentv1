@@ -5,15 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import `in`.tutorial.pagingfragmentv1.R
+import `in`.tutorial.pagingfragmentv1.databinding.FragmentDispatchPagingListBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [GRDetailsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class GRDetailsFragment : Fragment() {
-
+class DispatchPagingFragment : Fragment() {
+    var binding: FragmentDispatchPagingListBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -22,6 +23,14 @@ class GRDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_g_r_details, container, false)
+        binding = FragmentDispatchPagingListBinding.inflate(inflater)
+        return binding!!.root
     }
+
+    override fun onStart() {
+        super.onStart()
+        val args: DispatchPagingFragmentArgs by navArgs()
+        binding?.tvGrNo?.text = args.grNo
+    }
+
 }

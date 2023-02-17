@@ -13,12 +13,15 @@
         <action
             android:id="@+id/action_filterFragment_to_pagingListFragment"
             app:destination="@id/pagingListFragment" />
+        <action
+            android:id="@+id/action_filterFragment_to_dispatchFiltersFragment"
+            app:destination="@id/dispatchFiltersFragment" />
     </fragment>
     <fragment
         android:id="@+id/pagingListFragment"
         android:name="in.tutorial.pagingfragmentv1.view.fragment.PagingListFragment"
         android:label="fragment_paging_list"
-        tools:layout="@layout/fragment_paging_list" >
+        tools:layout="@layout/fragment_gr_paging_list" >
         <argument android:name="grNo"
             app:argType="string"
             android:defaultValue='""'/>
@@ -31,5 +34,37 @@
         <action
             android:id="@+id/action_pagingListFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_pagingListFragment_to_GRDetails"
+            app:destination="@id/GRDetails" />
     </fragment>
+    <activity
+        android:id="@+id/GRDetails"
+        android:name="in.tutorial.pagingfragmentv1.view.activity.GRDetails"
+        android:label="activity_grdetails"
+        tools:layout="@layout/activity_grdetails" >
+        <argument android:name="grId"
+            app:argType="string"
+            android:defaultValue='""'/>
+    </activity>
+    <fragment
+        android:id="@+id/dispatchFiltersFragment"
+        android:name="in.tutorial.pagingfragmentv1.view.fragment.DispatchPagingFragment"
+        android:label="fragment_dispatch_filters"
+        tools:layout="@layout/fragment_dispatch_paging_list" >
+        <argument android:name="grNo"
+            app:argType="string"
+            android:defaultValue='""'/>
+        <argument android:name="dateFrom"
+            app:argType="string"
+            android:defaultValue='""'/>
+        <argument android:name="dateTo"
+            app:argType="string"
+            android:defaultValue='""'/>
+        <action
+            android:id="@+id/action_dispatchFiltersFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
+
+
 </navigation>

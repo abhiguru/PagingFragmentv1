@@ -8,4 +8,8 @@
     <string name="gr_dtl_weight">Weight: %1$s</string>
     <string name="gr_dtl_rack">Rack : %1$s</string>
     <string name="gr_dtl_package_mark">Package Mark: %1$s</string>
+    <string name="image_contentDescription">Content Description</string>
+    <string name="GoodsReceived">Goods Received</string>
+    <string name="nav_sign_out">Sign Out</string>
+    <string name="Dispatch">Dispatch</string>
 </resources>

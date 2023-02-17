@@ -43,19 +43,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding?.signInButton?.setOnClickListener(this)
 
     }
-
     override fun onStart() {
         super.onStart()
         val account: GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
         //updateUI(account)
     }
-
     override fun onClick(v: View?) {
         when(v?.id){
            R.id.sign_in_button -> signIn()
         }
     }
-
     val resLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         if(it.resultCode == Activity.RESULT_OK){
             val data: Intent? = it.data
@@ -65,7 +62,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             val data: Intent? = it.data
         }
     }
-
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account: GoogleSignInAccount = completedTask.getResult(ApiException::class.java)

@@ -18,7 +18,6 @@ class GRFlowPagingSource(
     override fun getRefreshKey(state: PagingState<Int, GRPaging.GoodsReceived>): Int? {
         return state.anchorPosition
     }
-
     // load data from api for params
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GRPaging.GoodsReceived> {
         val currentPage = params.key?:1
@@ -56,7 +55,6 @@ class GRFlowPagingSource(
             return LoadResult.Error(e)
         }
     }
-
     override fun mapFromResponse(response: GoodsReceivedResponse): GRPaging {
         return with(response){
             GRPaging(

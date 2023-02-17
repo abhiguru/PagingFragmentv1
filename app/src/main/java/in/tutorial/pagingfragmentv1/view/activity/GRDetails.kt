@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.navArgs
 import androidx.paging.PagingSource
 import androidx.recyclerview.widget.LinearLayoutManager
 import `in`.tutorial.pagingfragmentv1.MyApplication
@@ -25,7 +27,8 @@ class GRDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindings = ActivityGrdetailsBinding.inflate(layoutInflater)
         setContentView(bindings!!.root)
-        val grId = intent.getStringExtra("grId")
+        val args : GRDetailsArgs by navArgs()
+        val grId = args.grId
         viewModel = GRDetailsViewModel(this.application as MyApplication)
         grId?.let { viewModel.getDetails(it) }
         viewModel.grDetails.observe(this) {

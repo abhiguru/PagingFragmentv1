@@ -3,18 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.PagingListFragment">
+    tools:context=".view.fragment.DispatchPagingFragment">
 
     <TextView
-        android:id="@+id/tv_search_gr"
-        android:visibility="gone"
+        android:id="@+id/tv_grNo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="No search of GR" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_paging_gr"
-        android:layout_width="match_parent"
-        android:layout_height="600dp" />
+        android:text="@string/hello_blank_fragment"
+        android:layout_marginStart="@dimen/_140sdp"/>
 
 </FrameLayout>
