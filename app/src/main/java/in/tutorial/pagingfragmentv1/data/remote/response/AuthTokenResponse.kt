@@ -1,4 +1,4 @@
-package `in`.tutorial.pagingfragmentv1.data.remote.model
+package `in`.tutorial.pagingfragmentv1.data.remote.response
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName

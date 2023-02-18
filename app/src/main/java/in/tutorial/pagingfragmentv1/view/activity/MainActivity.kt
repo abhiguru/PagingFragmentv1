@@ -6,13 +6,10 @@ import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.navigation.NavigationView
 import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.databinding.ActivityMainBinding
-import `in`.tutorial.pagingfragmentv1.view.fragment.FilterFragmentDirections
-import `in`.tutorial.pagingfragmentv1.view.fragment.PagingListFragmentDirections
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var navController: NavController

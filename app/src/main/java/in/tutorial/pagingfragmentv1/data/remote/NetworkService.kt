@@ -1,9 +1,10 @@
 package `in`.tutorial.pagingfragmentv1.data.remote
 
 import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthToken
-import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthTokenResponse
-import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodReceivedDetails
-import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodsReceivedResponse
+import `in`.tutorial.pagingfragmentv1.data.remote.response.AuthTokenResponse
+import `in`.tutorial.pagingfragmentv1.data.remote.response.DispatchListResponse
+import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodReceivedDetailsResponse
+import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodsReceivedListResponse
 import retrofit2.http.*
 import java.util.UUID
 
@@ -18,7 +19,7 @@ interface NetworkService {
         @Query("dateFrom") dateFrom: String,
         @Query("dateTo") dateTo: String,
         @Query("grNo") grNo: String?
-    ): GoodsReceivedResponse
+    ): GoodsReceivedListResponse
 
     @Headers(
         Endpoint.HEADER_ACCEPT
@@ -29,14 +30,36 @@ interface NetworkService {
         @Query("page") pageNumber: Int,
         @Query("dateFrom") dateFrom: String,
         @Query("dateTo") dateTo: String,
-    ): GoodsReceivedResponse
+    ): GoodsReceivedListResponse
 
     @Headers(
-        Endpoint.HEADER_ACCEPT,
-        Endpoint.HEADER_AUTH
+        Endpoint.HEADER_ACCEPT
+    )
+    @GET(Endpoint.GET_ALL_DISPATCH)
+    suspend fun getDispListFlowAll(
+        @Header("auth") auth:String,
+        @Query("page") pageNumber: Int,
+        @Query("dateFrom") dateFrom: String,
+        @Query("dateTo") dateTo: String,
+    ): DispatchListResponse
+
+    @Headers(
+        Endpoint.HEADER_ACCEPT
+    )
+    @GET(Endpoint.GET_ALL_DISPATCH)
+    suspend fun getDispListFlowAllByGR(
+        @Header("auth") auth:String,
+        @Query("page") pageNumber: Int,
+        @Query("dateFrom") dateFrom: String,
+        @Query("dateTo") dateTo: String,
+        @Query("grNo") grNo: String?
+    ): DispatchListResponse
+
+    @Headers(
+        Endpoint.HEADER_ACCEPT
     )
     @GET(Endpoint.GET_GR_DETAILS)
-    suspend fun getGRDetails(@Path("id") id:UUID): GoodReceivedDetails
+    suspend fun getGRDetails(@Header("auth") auth:String, @Path("id") id:UUID): GoodReceivedDetailsResponse
 
     @POST
     suspend fun postAuthToken(@Url url:String, @Body body: AuthToken): AuthTokenResponse

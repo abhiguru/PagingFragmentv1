@@ -16,7 +16,7 @@ import `in`.tutorial.pagingfragmentv1.data.remote.repository.paging.GRFlowPaging
 import `in`.tutorial.pagingfragmentv1.databinding.FragmentGrPagingListBinding
 import `in`.tutorial.pagingfragmentv1.utils.ViewModelProviderFactory
 import `in`.tutorial.pagingfragmentv1.view.adapter.GRPagingDataAdapter
-import `in`.tutorial.pagingfragmentv1.viewModel.FlowPagerViewModel
+import `in`.tutorial.pagingfragmentv1.viewModel.GRFlowPagerViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -25,8 +25,8 @@ import kotlinx.coroutines.launch
  * A simple [Fragment] subclass.
  * create an instance of this fragment.
  */
-class PagingListFragment : Fragment() {
-    private lateinit var viewModelFlow: FlowPagerViewModel
+class GRPagingListFragment : Fragment() {
+    private lateinit var viewModelFlow: GRFlowPagerViewModel
     private var bindings: FragmentGrPagingListBinding? = null
     private lateinit var repositoryImpl: GRFlowRepositoryImpl
     private var pagingSource: GRFlowPagingSource? = null
@@ -47,7 +47,7 @@ class PagingListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val args : PagingListFragmentArgs by navArgs()
+        val args : GRPagingListFragmentArgs by navArgs()
         paging(args.grNo, args.dateFrom, args.dateTo)
     }
 
@@ -59,11 +59,11 @@ class PagingListFragment : Fragment() {
         )
         repositoryImpl = GRFlowRepositoryImpl(pagingSource!!)
 
-        viewModelFlow = ViewModelProvider(this, ViewModelProviderFactory(FlowPagerViewModel::class){
-            FlowPagerViewModel(repositoryImpl = repositoryImpl)
-        }).get(FlowPagerViewModel::class.java)
+        viewModelFlow = ViewModelProvider(this, ViewModelProviderFactory(GRFlowPagerViewModel::class){
+            GRFlowPagerViewModel(repositoryImpl = repositoryImpl)
+        }).get(GRFlowPagerViewModel::class.java)
 
-        pagingDataAdapter = GRPagingDataAdapter(this@PagingListFragment)
+        pagingDataAdapter = GRPagingDataAdapter(this@GRPagingListFragment)
         bindings?.rvPagingGr?.apply {
             layoutManager = linearLayoutManager
             adapter = pagingDataAdapter

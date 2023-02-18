@@ -14,7 +14,7 @@ import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.databinding.GrListItemBinding
 import `in`.tutorial.pagingfragmentv1.view.activity.GRDetails
-import `in`.tutorial.pagingfragmentv1.view.fragment.PagingListFragmentDirections
+import `in`.tutorial.pagingfragmentv1.view.fragment.GRPagingListFragmentDirections
 import java.util.UUID
 
 class GRPagingDataAdapter(
@@ -30,7 +30,7 @@ class GRPagingDataAdapter(
             Log.e("GRClick", " GRId - ${holder.binding.tvGrId.text}")
             val grId = holder.binding.tvGrId.text
             fragment.findNavController().navigate(
-                PagingListFragmentDirections
+                GRPagingListFragmentDirections
                     .actionPagingListFragmentToGRDetails(grId = grId as String))
         }
     }

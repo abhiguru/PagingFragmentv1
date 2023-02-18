@@ -12,4 +12,5 @@
     <string name="GoodsReceived">Goods Received</string>
     <string name="nav_sign_out">Sign Out</string>
     <string name="Dispatch">Dispatch</string>
+    <string name="close">Close</string>
 </resources>

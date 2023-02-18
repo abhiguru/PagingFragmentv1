@@ -2,16 +2,13 @@ package `in`.tutorial.pagingfragmentv1.view.fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.databinding.FragmentFilterBinding
-import `in`.tutorial.pagingfragmentv1.viewModel.PageFilter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -92,7 +89,7 @@ class FilterFragment : Fragment() {
 
             if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
                 findNavController().navigate(
-                    PagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
+                    GRPagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
                 )
                 findNavController().navigate(
                     FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
@@ -102,7 +99,7 @@ class FilterFragment : Fragment() {
             }
             if(findNavController().currentDestination?.id == R.id.dispatchFiltersFragment){
                 findNavController().navigate(
-                    DispatchPagingFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
+                    DispatchPagingListFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
                 )
                 findNavController().navigate(
                     FilterFragmentDirections.actionFilterFragmentToDispatchFiltersFragment(
@@ -118,7 +115,7 @@ class FilterFragment : Fragment() {
         val dateTo = binding?.etDateTo?.text.toString()
         if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
             findNavController().navigate(
-                PagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
+                GRPagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
             )
         }
         findNavController().navigate(

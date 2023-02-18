@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 
 @Keep
-data class GoodsReceivedResponse(
+data class GoodsReceivedListResponse(
     @SerializedName("current_page")
     val currentPage: Int,
     @SerializedName("next")

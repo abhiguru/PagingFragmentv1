@@ -3,10 +3,9 @@ package `in`.tutorial.pagingfragmentv1.data.remote.repository.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import `in`.tutorial.pagingfragmentv1.data.remote.NetworkService
-import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthToken
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.data.remote.model.GoodReceivedResponseMapper
-import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodsReceivedResponse
+import `in`.tutorial.pagingfragmentv1.data.remote.response.GoodsReceivedListResponse
 
 class GRFlowPagingSource(
     private val authToken: String,
@@ -14,7 +13,7 @@ class GRFlowPagingSource(
     private val dateFrom:String,
     private val dateTo:String,
     private val grNo:String
-    ):PagingSource<Int, GRPaging.GoodsReceived>(), GoodReceivedResponseMapper<GoodsReceivedResponse,GRPaging> {
+    ):PagingSource<Int, GRPaging.GoodsReceived>(), GoodReceivedResponseMapper<GoodsReceivedListResponse,GRPaging> {
     override fun getRefreshKey(state: PagingState<Int, GRPaging.GoodsReceived>): Int? {
         return state.anchorPosition
     }
@@ -55,7 +54,7 @@ class GRFlowPagingSource(
             return LoadResult.Error(e)
         }
     }
-    override fun mapFromResponse(response: GoodsReceivedResponse): GRPaging {
+    override fun mapFromResponse(response: GoodsReceivedListResponse): GRPaging {
         return with(response){
             GRPaging(
                 currentPage = response.currentPage,

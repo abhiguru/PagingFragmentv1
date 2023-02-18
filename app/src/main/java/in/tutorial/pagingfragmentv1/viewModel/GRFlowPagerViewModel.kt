@@ -8,7 +8,7 @@ import `in`.tutorial.pagingfragmentv1.data.remote.model.GRPaging
 import `in`.tutorial.pagingfragmentv1.data.remote.repository.flow.GRFlowRepositoryImpl
 import kotlinx.coroutines.flow.Flow
 
-class FlowPagerViewModel(
+class GRFlowPagerViewModel(
     private val repositoryImpl: GRFlowRepositoryImpl
 ):ViewModel() {
     fun getGRListPaging():

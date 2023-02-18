@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/pagingListFragment"
-        android:name="in.tutorial.pagingfragmentv1.view.fragment.PagingListFragment"
+        android:name="in.tutorial.pagingfragmentv1.view.fragment.GRPagingListFragment"
         android:label="fragment_paging_list"
         tools:layout="@layout/fragment_gr_paging_list" >
         <argument android:name="grNo"
@@ -49,7 +49,7 @@
     </activity>
     <fragment
         android:id="@+id/dispatchFiltersFragment"
-        android:name="in.tutorial.pagingfragmentv1.view.fragment.DispatchPagingFragment"
+        android:name="in.tutorial.pagingfragmentv1.view.fragment.DispatchPagingListFragment"
         android:label="fragment_dispatch_filters"
         tools:layout="@layout/fragment_dispatch_paging_list" >
         <argument android:name="grNo"
