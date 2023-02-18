@@ -3,6 +3,7 @@ package `in`.tutorial.pagingfragmentv1.data.remote
 object Endpoint {
     const val GET_ALL_GR = "goodsreceived/light/"
     const val GET_GR_DETAILS = "goodsreceived/{id}/"
+    const val GET_DISPATCH_DETAILS = "dispatch/{id}/"
     const val GET_ALL_DISPATCH = "dispatch/light/"
     const val POST_AUTH_TOKEN = "http://192.168.0.180/auth/android/"
     const val HEADER_ACCEPT = "Accept: application/json"

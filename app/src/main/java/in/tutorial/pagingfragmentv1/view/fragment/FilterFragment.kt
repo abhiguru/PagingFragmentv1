@@ -2,6 +2,7 @@ package `in`.tutorial.pagingfragmentv1.view.fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -113,15 +114,33 @@ class FilterFragment : Fragment() {
         super.onStart()
         val dateFrom = binding?.etDateFrom?.text.toString()
         val dateTo = binding?.etDateTo?.text.toString()
+
+        if(findNavController().currentDestination?.id == R.id.filterFragment) {
+            findNavController().navigate(
+                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                    "", dateFrom, dateTo
+                )
+            )
+        }
         if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
             findNavController().navigate(
                 GRPagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
             )
-        }
-        findNavController().navigate(
-            FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
-                "", dateFrom, dateTo
+            findNavController().navigate(
+                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                    "", dateFrom, dateTo
+                )
             )
-        )
+        }
+        if(findNavController().currentDestination?.id == R.id.dispatchFiltersFragment){
+            findNavController().navigate(
+                DispatchPagingListFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
+            )
+            findNavController().navigate(
+                FilterFragmentDirections.actionFilterFragmentToDispatchFiltersFragment(
+                    "", dateFrom, dateTo
+                )
+            )
+        }
     }
 }

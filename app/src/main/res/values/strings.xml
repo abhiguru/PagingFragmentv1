@@ -13,4 +13,13 @@
     <string name="nav_sign_out">Sign Out</string>
     <string name="Dispatch">Dispatch</string>
     <string name="close">Close</string>
+    <string name="title_gr_details">Goods Received Details</string>
+    <string name="dispatch_detail_grNo">GR No: %1$s</string>
+    <string name="dispatch_detail_itemName">Item Name: %1$s</string>
+    <string name="dispatch_detail_grQty">Original Qty: %1$s</string>
+    <string name="dispatch_detail_dispQty">Dispatch Qty: %1$s</string>
+    <string name="dispatch_detail_packageMark">Package Mark: %1$s</string>
+    <string name="dispatch_detail_weight">Weight: %1$s</string>
+    <string name="dispatch_detail_rack">Storage Rack: %1$s</string>
+    <string name="title_dispatch_details">Dispatch Details</string>
 </resources>

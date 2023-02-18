@@ -64,7 +64,19 @@
         <action
             android:id="@+id/action_dispatchFiltersFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_dispatchFiltersFragment_to_dispatchDetails"
+            app:destination="@id/dispatchDetails" />
     </fragment>
+    <activity
+        android:id="@+id/dispatchDetails"
+        android:name="in.tutorial.pagingfragmentv1.view.activity.DispatchDetails"
+        android:label="activity_dispatch_details"
+        tools:layout="@layout/activity_dispatch_details" >
+        <argument android:name="dispId"
+            app:argType="string"
+            android:defaultValue='""'/>
+    </activity>
 
 
 </navigation>

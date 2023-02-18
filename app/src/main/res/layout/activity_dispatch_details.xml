@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.GRDetails">
+    tools:context=".view.activity.DispatchDetails">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_grDetails"
+        android:id="@+id/toolbar_dispatchDetails"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_grDetails">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_dispatchDetails">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,21 +31,21 @@
             app:layout_constraintVertical_chainStyle="spread_inside">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_grno"
+                android:id="@+id/til_dispNo"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
-                android:hint="GRNo"
+                android:hint="Dispatch No"
                 app:hintTextColor="@color/blue_grey_700"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/et_grno"
+                    android:id="@+id/et_dispNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
@@ -56,21 +56,21 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_sender"
+                android:id="@+id/til_dispDate"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
-                android:hint="Sender Name"
+                android:hint="Dispatch Date"
                 app:hintTextColor="@color/blue_grey_700"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_grno">
+                app:layout_constraintTop_toBottomOf="@id/til_dispNo">
 
                 <EditText
-                    android:id="@+id/et_sender"
+                    android:id="@+id/et_dispDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
@@ -92,7 +92,7 @@
                 app:hintTextColor="@color/blue_grey_700"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_sender">
+                app:layout_constraintTop_toBottomOf="@id/til_dispDate">
 
                 <EditText
                     android:id="@+id/et_registration"
@@ -101,31 +101,6 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:inputType="text"
-                    android:textColor="@color/grey_900"
-                    android:textSize="@dimen/_15sdp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_date"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:hint="Date"
-                app:hintTextColor="@color/blue_grey_700"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_registration">
-
-                <EditText
-                    android:id="@+id/et_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:gravity="top"
                     android:textColor="@color/grey_900"
                     android:textSize="@dimen/_15sdp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +117,7 @@
                 app:hintTextColor="@color/blue_grey_700"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_date">
+                app:layout_constraintTop_toBottomOf="@id/til_registration">
 
                 <EditText
                     android:id="@+id/et_customer"
@@ -184,7 +159,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_gr_details_items_list"
+                android:id="@+id/rv_disp_details_list_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/_10sdp"
@@ -206,7 +181,7 @@
                 app:hintTextColor="@color/blue_grey_700"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_gr_details_items_list">
+                app:layout_constraintTop_toBottomOf="@id/rv_disp_details_list_items">
 
                 <EditText
                     android:id="@+id/et_note"

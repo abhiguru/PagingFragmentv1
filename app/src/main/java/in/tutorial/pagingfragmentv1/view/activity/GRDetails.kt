@@ -22,7 +22,7 @@ import java.util.*
 
 class GRDetails : AppCompatActivity() {
     var bindings: ActivityGrdetailsBinding? = null
-    lateinit var viewModel: GRDetailsViewModel
+    private lateinit var viewModel: GRDetailsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindings = ActivityGrdetailsBinding.inflate(layoutInflater)
@@ -38,7 +38,7 @@ class GRDetails : AppCompatActivity() {
             bindings?.etSupervisor?.setText(it.supervisorName)
             bindings?.etCustomer?.setText(it.customerName)
             bindings?.etGrno?.setText(it.grNo)
-            //bindings?.etNote?.setText(it.note)
+            bindings?.etNote?.setText(it.note)
             val grAdapter = GRDetailsItemsListAdapter(it.trl,
                 this@GRDetails)
             bindings?.rvGrDetailsItemsList?.apply {
@@ -46,7 +46,16 @@ class GRDetails : AppCompatActivity() {
                 adapter = grAdapter
             }
         }
-
-
+        setupActionBar()
+    }
+    private fun setupActionBar(){
+        setSupportActionBar(bindings!!.toolbarGrDetails)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.let {
+            it.title = resources.getString(R.string.title_gr_details)
+        }
+        bindings?.toolbarGrDetails!!.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }

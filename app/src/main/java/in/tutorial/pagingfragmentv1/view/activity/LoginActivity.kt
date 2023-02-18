@@ -1,7 +1,6 @@
 package `in`.tutorial.pagingfragmentv1.view.activity
 
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +8,6 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -20,12 +18,10 @@ import `in`.tutorial.pagingfragmentv1.MyApplication
 import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.data.remote.Endpoint
 import `in`.tutorial.pagingfragmentv1.data.remote.model.AuthToken
-import `in`.tutorial.pagingfragmentv1.data.remote.repository.flow.GRDetailsFlowRepositoryImpl
+import `in`.tutorial.pagingfragmentv1.data.remote.repository.flow.FlowRepositoryImpl
 import `in`.tutorial.pagingfragmentv1.databinding.ActivityLoginBinding
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.io.IOException
-import java.util.*
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -67,10 +63,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             val account: GoogleSignInAccount = completedTask.getResult(ApiException::class.java)
             try {
                 val networkService = (application as MyApplication).networkService
-                var grDetailsFlowRepositoryImpl:GRDetailsFlowRepositoryImpl =
-                                GRDetailsFlowRepositoryImpl(networkService)
+                var flowRepositoryImpl:FlowRepositoryImpl =
+                                FlowRepositoryImpl(networkService)
                 lifecycleScope.launch {
-                    grDetailsFlowRepositoryImpl.postAuth("http://192.168.0.180:2828/auth/android/",
+                    flowRepositoryImpl.postAuth("http://192.168.0.180:2828/auth/android/",
                         AuthToken(account.idToken.toString())
                     ).collect{
                         Log.e("Google", "Auth response "+it.authDetails.token)

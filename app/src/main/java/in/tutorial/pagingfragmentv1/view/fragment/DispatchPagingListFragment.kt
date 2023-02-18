@@ -60,7 +60,7 @@ class DispatchPagingListFragment : Fragment() {
             DispatchFlowPagerViewModel(repository)
         }).get(DispatchFlowPagerViewModel::class.java)
 
-        pagingDataAdapter = DispatchPagingDataAdapter()
+        pagingDataAdapter = DispatchPagingDataAdapter(this@DispatchPagingListFragment)
         binding?.rvPagingDispatch?.apply {
             adapter = pagingDataAdapter
             layoutManager = linearLayoutManager
