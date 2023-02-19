@@ -2,7 +2,6 @@ package `in`.tutorial.pagingfragmentv1.view.fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -88,22 +87,22 @@ class FilterFragment : Fragment() {
             val dateFrom = binding?.etDateFrom?.text.toString()
             val dateTo = binding?.etDateTo?.text.toString()
 
-            if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
+            if(findNavController().currentDestination?.id == R.id.GRPagingListFragment) {
                 findNavController().navigate(
                     GRPagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
                 )
                 findNavController().navigate(
-                    FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                    FilterFragmentDirections.actionFilterFragmentToGRPagingListFragment(
                         text, dateFrom, dateTo
                     )
                 )
             }
-            if(findNavController().currentDestination?.id == R.id.dispatchFiltersFragment){
+            if(findNavController().currentDestination?.id == R.id.dispatchPagingListFragment){
                 findNavController().navigate(
                     DispatchPagingListFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
                 )
                 findNavController().navigate(
-                    FilterFragmentDirections.actionFilterFragmentToDispatchFiltersFragment(
+                    FilterFragmentDirections.actionFilterFragmentToDispatchPagingListFragment(
                         text, dateFrom, dateTo
                     )
                 )
@@ -117,27 +116,27 @@ class FilterFragment : Fragment() {
 
         if(findNavController().currentDestination?.id == R.id.filterFragment) {
             findNavController().navigate(
-                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                FilterFragmentDirections.actionFilterFragmentToGRPagingListFragment(
                     "", dateFrom, dateTo
                 )
             )
         }
-        if(findNavController().currentDestination?.id == R.id.pagingListFragment) {
+        if(findNavController().currentDestination?.id == R.id.GRPagingListFragment) {
             findNavController().navigate(
                 GRPagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
             )
             findNavController().navigate(
-                FilterFragmentDirections.actionFilterFragmentToPagingListFragment(
+                FilterFragmentDirections.actionFilterFragmentToGRPagingListFragment(
                     "", dateFrom, dateTo
                 )
             )
         }
-        if(findNavController().currentDestination?.id == R.id.dispatchFiltersFragment){
+        if(findNavController().currentDestination?.id == R.id.dispatchPagingListFragment){
             findNavController().navigate(
                 DispatchPagingListFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
             )
             findNavController().navigate(
-                FilterFragmentDirections.actionFilterFragmentToDispatchFiltersFragment(
+                FilterFragmentDirections.actionFilterFragmentToDispatchPagingListFragment(
                     "", dateFrom, dateTo
                 )
             )

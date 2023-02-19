@@ -9,6 +9,12 @@ import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.databinding.ActivityMainBinding
+import `in`.tutorial.pagingfragmentv1.view.fragment.DispatchPagingListFragmentDirections
+import `in`.tutorial.pagingfragmentv1.view.fragment.FilterFragmentDirections
+import `in`.tutorial.pagingfragmentv1.view.fragment.GRPagingListFragmentDirections
+import `in`.tutorial.pagingfragmentv1.view.fragment.InvoicePagingListFragmentDirections
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -41,10 +47,49 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_goods_received->{
-                this.navController.navigate(R.id.filterFragment)
+                this.navController.navigate(R.id.GRPagingListFragment)
+                this.navController.navigate(
+                    GRPagingListFragmentDirections.actionPagingListFragmentToFilterFragment()
+                )
+                var calTo = Calendar.getInstance()
+                val myFormat = "yyyy-MM-dd"
+                val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+                val calToDate = sdf.format(calTo.time).toString()
+                this.navController.navigate(
+                    FilterFragmentDirections
+                        .actionFilterFragmentToGRPagingListFragment
+                            ("","2020-02-01",calToDate)
+                )
             }
             R.id.nav_dispatch->{
-                this.navController.navigate(R.id.dispatchFiltersFragment)
+                this.navController.navigate(R.id.dispatchPagingListFragment)
+                this.navController.navigate(
+                    DispatchPagingListFragmentDirections.actionDispatchFiltersFragmentToFilterFragment()
+                )
+                var calTo = Calendar.getInstance()
+                val myFormat = "yyyy-MM-dd"
+                val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+                val calToDate = sdf.format(calTo.time).toString()
+                this.navController.navigate(
+                    FilterFragmentDirections
+                        .actionFilterFragmentToDispatchPagingListFragment
+                            ("","2020-02-01",calToDate)
+                )
+            }
+            R.id.nav_invoice->{
+                this.navController.navigate(R.id.invoicePagingListFragment)
+                this.navController.navigate(
+                    InvoicePagingListFragmentDirections.actionInvoicePagingListFragmentToFilterFragment()
+                )
+                var calTo = Calendar.getInstance()
+                val myFormat = "yyyy-MM-dd"
+                val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+                val calToDate = sdf.format(calTo.time).toString()
+                this.navController.navigate(
+                    FilterFragmentDirections
+                        .actionFilterFragmentToInvoicePagingListFragment
+                            ("","2020-02-01",calToDate)
+                )
             }
         }
         return true

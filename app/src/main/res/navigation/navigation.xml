@@ -11,14 +11,17 @@
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" >
         <action
-            android:id="@+id/action_filterFragment_to_pagingListFragment"
-            app:destination="@id/pagingListFragment" />
+            android:id="@+id/action_filterFragment_to_GRPagingListFragment"
+            app:destination="@id/GRPagingListFragment" />
         <action
-            android:id="@+id/action_filterFragment_to_dispatchFiltersFragment"
-            app:destination="@id/dispatchFiltersFragment" />
+            android:id="@+id/action_filterFragment_to_dispatchPagingListFragment"
+            app:destination="@id/dispatchPagingListFragment" />
+        <action
+            android:id="@+id/action_filterFragment_to_invoicePagingListFragment"
+            app:destination="@id/invoicePagingListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/pagingListFragment"
+        android:id="@+id/GRPagingListFragment"
         android:name="in.tutorial.pagingfragmentv1.view.fragment.GRPagingListFragment"
         android:label="fragment_paging_list"
         tools:layout="@layout/fragment_gr_paging_list" >
@@ -36,10 +39,10 @@
             app:destination="@id/filterFragment" />
         <action
             android:id="@+id/action_pagingListFragment_to_GRDetails"
-            app:destination="@id/GRDetails" />
+            app:destination="@id/GRDetailsActivity" />
     </fragment>
     <activity
-        android:id="@+id/GRDetails"
+        android:id="@+id/GRDetailsActivity"
         android:name="in.tutorial.pagingfragmentv1.view.activity.GRDetails"
         android:label="activity_grdetails"
         tools:layout="@layout/activity_grdetails" >
@@ -48,7 +51,7 @@
             android:defaultValue='""'/>
     </activity>
     <fragment
-        android:id="@+id/dispatchFiltersFragment"
+        android:id="@+id/dispatchPagingListFragment"
         android:name="in.tutorial.pagingfragmentv1.view.fragment.DispatchPagingListFragment"
         android:label="fragment_dispatch_filters"
         tools:layout="@layout/fragment_dispatch_paging_list" >
@@ -77,6 +80,32 @@
             app:argType="string"
             android:defaultValue='""'/>
     </activity>
+    <fragment
+        android:id="@+id/invoicePagingListFragment"
+        android:name="in.tutorial.pagingfragmentv1.view.fragment.InvoicePagingListFragment"
+        android:label="fragment_invoice_paging_list"
+        tools:layout="@layout/fragment_invoice_paging_list" >
+        <argument android:name="grNo"
+            app:argType="string"
+            android:defaultValue='""'/>
+        <argument android:name="dateFrom"
+            app:argType="string"
+            android:defaultValue='""'/>
+        <argument android:name="dateTo"
+            app:argType="string"
+            android:defaultValue='""'/>
+        <action
+            android:id="@+id/action_invoicePagingListFragment_to_invoiceActivity"
+            app:destination="@id/invoiceActivity" />
+        <action
+            android:id="@+id/action_invoicePagingListFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/invoiceActivity"
+        android:name="in.tutorial.pagingfragmentv1.view.activity.InvoiceActivity"
+        android:label="activity_invoice"
+        tools:layout="@layout/activity_invoice" />
 
 
 </navigation>
