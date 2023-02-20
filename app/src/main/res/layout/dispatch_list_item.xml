@@ -31,7 +31,7 @@
             android:singleLine="true"
             android:ellipsize="end"
             android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_60sdp"
             android:layout_height="wrap_content"/>
         <TextView
             android:visibility="gone"
