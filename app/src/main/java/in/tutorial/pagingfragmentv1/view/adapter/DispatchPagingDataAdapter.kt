@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.data.remote.response.DispatchListResponse
 import `in`.tutorial.pagingfragmentv1.databinding.DispatchListItemBinding
 import `in`.tutorial.pagingfragmentv1.view.fragment.DispatchPagingListFragment
@@ -17,6 +18,11 @@ class DispatchPagingDataAdapter(
 ): PagingDataAdapter<DispatchListResponse.DispatchItem,
         DispatchPagingDataAdapter.MyViewHolder>(diffUtil) {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        if(position % 2==0){
+            holder.itemView.setBackgroundColor(fragment.resources.getColor(R.color.white))
+        }else{
+            holder.itemView.setBackgroundColor(fragment.resources.getColor(R.color.paging_list))
+        }
         getItem(position)?.let {
             holder.onBind(it)
             holder.itemView.setOnClickListener {
@@ -58,6 +64,7 @@ class DispatchPagingDataAdapter(
             binding.tvDispatchCustomerName.text = data.dispCustomerName
             binding.tvDispatchItemName.text = data.itemName
             binding.tvDispatchQty.text = data.dispQty.toString()
+            binding.tvDispatchDate.text = data.dispDate
         }
     }
 }

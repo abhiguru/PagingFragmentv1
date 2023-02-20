@@ -96,16 +96,20 @@
             android:defaultValue='""'/>
         <action
             android:id="@+id/action_invoicePagingListFragment_to_invoiceActivity"
-            app:destination="@id/invoiceActivity" />
+            app:destination="@id/invoiceDetailsActivity" />
         <action
             android:id="@+id/action_invoicePagingListFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
     </fragment>
     <activity
-        android:id="@+id/invoiceActivity"
-        android:name="in.tutorial.pagingfragmentv1.view.activity.InvoiceActivity"
+        android:id="@+id/invoiceDetailsActivity"
+        android:name="in.tutorial.pagingfragmentv1.view.activity.InvoiceDetailsActivity"
         android:label="activity_invoice"
-        tools:layout="@layout/activity_invoice" />
+        tools:layout="@layout/activity_invoice_details" >
+        <argument android:name="invoiceId"
+            app:argType="string"
+            android:defaultValue='""'/>
+    </activity>
 
 
 </navigation>

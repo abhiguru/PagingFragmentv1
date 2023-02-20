@@ -16,27 +16,60 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_invNo"
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:scrollHorizontally="true"
+            android:textAlignment="3"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_width="@dimen/_30sdp"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_grNo"
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_grQty"
-            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:textSize="20sp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_packageMark"
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/tv_invTotal"
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAlignment="3"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

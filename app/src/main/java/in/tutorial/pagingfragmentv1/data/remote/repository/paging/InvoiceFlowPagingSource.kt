@@ -19,15 +19,30 @@ class InvoiceFlowPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, InvoiceListResponse.InvoiceItem> {
         val currentPage = params.key?:1
         try {
-            return networkService.getInvoiceListFlowAll(
-                authToken, currentPage as Int, dateFrom, dateTo)
-            .run{
-                val data = this
-                return LoadResult.Page(
-                    data.invoiceItems,
-                    prevKey = if(currentPage == 1) null else currentPage - 1,
-                    nextKey = if(currentPage == data.pagesCount) null else currentPage + 1
+            if(grNo.isNotEmpty()) {
+                return networkService.getInvoiceListFlowAllByGR(
+                    authToken, currentPage as Int, dateFrom, dateTo, grNo
                 )
+                    .run {
+                        val data = this
+                        return LoadResult.Page(
+                            data.invoiceItems,
+                            prevKey = if (currentPage == 1) null else currentPage - 1,
+                            nextKey = if (currentPage == data.pagesCount) null else currentPage + 1
+                        )
+                    }
+            }else{
+                return networkService.getInvoiceListFlowAll(
+                    authToken, currentPage as Int, dateFrom, dateTo
+                )
+                    .run {
+                        val data = this
+                        return LoadResult.Page(
+                            data.invoiceItems,
+                            prevKey = if (currentPage == 1) null else currentPage - 1,
+                            nextKey = if (currentPage == data.pagesCount) null else currentPage + 1
+                        )
+                    }
             }
         }catch (e:Exception){
             return LoadResult.Error(e)

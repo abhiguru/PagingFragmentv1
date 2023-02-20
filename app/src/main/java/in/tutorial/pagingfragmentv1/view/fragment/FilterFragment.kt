@@ -107,6 +107,16 @@ class FilterFragment : Fragment() {
                     )
                 )
             }
+            if(findNavController().currentDestination?.id == R.id.invoicePagingListFragment){
+                findNavController().navigate(
+                    InvoicePagingListFragmentDirections.actionInvoicePagingListFragmentToFilterFragment()
+                )
+                findNavController().navigate(
+                    FilterFragmentDirections.actionFilterFragmentToInvoicePagingListFragment(
+                        text, dateFrom, dateTo
+                    )
+                )
+            }
         }
     }
     override fun onStart() {

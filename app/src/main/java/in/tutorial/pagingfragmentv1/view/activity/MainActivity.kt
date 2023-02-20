@@ -1,5 +1,6 @@
 package `in`.tutorial.pagingfragmentv1.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import `in`.tutorial.pagingfragmentv1.R
+import `in`.tutorial.pagingfragmentv1.data.remote.Endpoint
 import `in`.tutorial.pagingfragmentv1.databinding.ActivityMainBinding
 import `in`.tutorial.pagingfragmentv1.view.fragment.DispatchPagingListFragmentDirections
 import `in`.tutorial.pagingfragmentv1.view.fragment.FilterFragmentDirections
@@ -90,6 +92,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         .actionFilterFragmentToInvoicePagingListFragment
                             ("","2020-02-01",calToDate)
                 )
+            }
+            R.id.nav_sign_out->{
+                Endpoint.AUTH_TOKEN = ""
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
         }
         return true

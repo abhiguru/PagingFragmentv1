@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             .build()
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         binding?.signInButton?.setOnClickListener(this)
-
+        setupActionBar()
     }
     override fun onStart() {
         super.onStart()
@@ -99,5 +100,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         //resLauncher.launch(signInIntent)
         startActivityForResult(signInIntent, 1);
 
+    }
+
+    private fun setupActionBar(){
+        val toolbar = this.findViewById<Toolbar>(R.id.toolbar_login)
+        toolbar.title = "Guru Cold Storage - Sign In"
     }
 }

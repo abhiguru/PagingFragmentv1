@@ -52,7 +52,7 @@ class InvoicePagingListFragment : Fragment() {
         val args : InvoicePagingListFragmentArgs by navArgs()
         pagingSource = InvoiceFlowPagingSource(Endpoint.AUTH_TOKEN,
             networkService = (requireActivity().application as MyApplication).networkService,
-            args.dateFrom,args.dateTo,args.grNo)
+            args.dateFrom, args.dateTo, args.grNo)
         repository = InvoiceFlowRepositoryImpl(pagingSource = pagingSource)
         viewModel = ViewModelProvider(this, ViewModelProviderFactory(InvoiceFlowPagerViewModel::class){
             InvoiceFlowPagerViewModel(repository)
@@ -63,7 +63,7 @@ class InvoicePagingListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pagingDataAdapter = InvoicePagingDataAdapter()
+        pagingDataAdapter = InvoicePagingDataAdapter(this@InvoicePagingListFragment)
 
         binding?.rvPagingInvoice?.apply {
             layoutManager = linearLayoutManager

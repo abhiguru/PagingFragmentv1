@@ -18,4 +18,13 @@
     <color name="grey_500">#9E9E9E</color>
     <color name="colorAccent">#0C90F1</color>
 
+    <color name="primary_green">#B9F3E4</color>
+    <color name="primary_selected">#EA8FEA</color>
+    <color name="primary_unselected">#FFAACF</color>
+    <color name="primary_other">#F6E6C2</color>
+
+    <color name="toolbar_green">#90A17D</color>
+    <color name="button_green">#90A17D</color>
+    <color name="paging_list">#E1E1E1</color>
+
 </resources>

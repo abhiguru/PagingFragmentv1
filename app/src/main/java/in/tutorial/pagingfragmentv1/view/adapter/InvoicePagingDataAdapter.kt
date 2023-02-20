@@ -2,18 +2,37 @@ package `in`.tutorial.pagingfragmentv1.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import `in`.tutorial.pagingfragmentv1.R
 import `in`.tutorial.pagingfragmentv1.data.remote.response.InvoiceListResponse
 import `in`.tutorial.pagingfragmentv1.databinding.InvoiceListItemBinding
+import `in`.tutorial.pagingfragmentv1.view.fragment.DispatchPagingListFragmentDirections
+import `in`.tutorial.pagingfragmentv1.view.fragment.InvoicePagingListFragmentDirections
 
-class InvoicePagingDataAdapter():
+class InvoicePagingDataAdapter(
+    private val fragment: Fragment
+):
     PagingDataAdapter<InvoiceListResponse.InvoiceItem, InvoicePagingDataAdapter.MyViewHolder>(
         diffUtil) {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        if(position % 2==0){
+            holder.itemView.setBackgroundColor(fragment.resources.getColor(R.color.white))
+        }else{
+            holder.itemView.setBackgroundColor(fragment.resources.getColor(R.color.paging_list))
+        }
         getItem(position)?.let {
             holder.onBind(it)
+            holder.itemView.setOnClickListener {
+                val invoiceId = holder.binding.tvInvId.text
+                fragment.findNavController().navigate(
+                    InvoicePagingListFragmentDirections
+                        .actionInvoicePagingListFragmentToInvoiceActivity(invoiceId = invoiceId as String)
+                )
+            }
         }
     }
 

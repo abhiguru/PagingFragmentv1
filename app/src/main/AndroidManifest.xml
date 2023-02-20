@@ -18,14 +18,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".InvoiceActivity"
-            android:exported="false" />
+            android:name=".view.activity.InvoiceDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GCSv1.NoActionBar"/>
         <activity
             android:name=".view.activity.DispatchDetails"
             android:exported="false"
             android:theme="@style/Theme.GCSv1.NoActionBar" />
         <activity
             android:name=".view.activity.LoginActivity"
+            android:theme="@style/Theme.GCSv1.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

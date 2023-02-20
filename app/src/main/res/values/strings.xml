@@ -26,4 +26,14 @@
     <string name="title_dispatch_list">Dispatch List</string>
     <string name="Invoice">Invoice</string>
     <string name="title_invoice_list">Invoice List</string>
+    <string name="invoice_detail_itemName">Item Name: %1$s</string>
+    <string name="invoice_detail_grQty">Original Qty: %1$s</string>
+    <string name="invoice_detail_dispQty">Dispatch Qty: %1$s</string>
+    <string name="invoice_detail_dispDate">Dispatch Date: %1$s</string>
+    <string name="invoice_detail_packageMark">PackageMark: %1$s</string>
+    <string name="invoice_detail_weight">Weight: %1$s</string>
+    <string name="invoice_detail_duration">Storage Duration: %1$s</string>
+    <string name="invoice_detail_charge">Charge: %1$s</string>
+    <string name="invoice_detail_tax">Tax: %1$s</string>
+    <string name="title_invoice_details">Invoice Details</string>
 </resources>

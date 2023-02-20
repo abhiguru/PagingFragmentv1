@@ -23,8 +23,14 @@ class GRPagingDataAdapter(
     diffCallback = diffUtil
 ) {
     override fun onBindViewHolder(holder: GRViewHolder, position: Int) {
+        if(position % 2==0){
+            holder.itemView.setBackgroundColor(fragment.resources.getColor(R.color.white))
+        }else{
+            holder.itemView.setBackgroundColor(fragment.resources.getColor(R.color.paging_list))
+        }
         getItem(position)?.let {
             holder.onBind(it)
+
         }
         holder.itemView.setOnClickListener {
             Log.e("GRClick", " GRId - ${holder.binding.tvGrId.text}")
